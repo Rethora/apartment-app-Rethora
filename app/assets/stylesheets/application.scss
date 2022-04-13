@@ -14,3 +14,36 @@
  *= require_self
  */
 @import 'bootstrap';
+
+// Global
+.page-content {
+  padding: 100px 0;
+}
+
+.center {
+  text-align: center;
+}
+
+// Home
+#app-about {
+  display: flex;
+  justify-content: center;
+}
+
+#about-text {
+  width: 30%;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-items: center;
+}
+
+#about-text > p {
+  margin: 0 10px 0 0;
+}
+
+#complex-img {
+  width: 30%;
+  height: auto;
+}

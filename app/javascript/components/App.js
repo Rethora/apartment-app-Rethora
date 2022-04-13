@@ -4,6 +4,8 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
+import { Container } from 'reactstrap'
+import Home from './pages/Home'
 
 class App extends Component {
   render() {
@@ -21,7 +23,17 @@ class App extends Component {
     console.log("sign_out_route:", sign_out_route)
     return (
       <>
-        <h1>Apartment App</h1>
+        <Router>
+          <Container className='page-content'>
+            <Switch>
+              <Route
+                to='/'
+                exact
+                component={Home}
+              />
+            </Switch>
+          </Container>
+        </Router>
       </>
     )
   }

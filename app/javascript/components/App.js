@@ -22,19 +22,17 @@ class App extends Component {
     console.log("sign_in_route:", sign_in_route)
     console.log("sign_out_route:", sign_out_route)
     return (
-      <>
-        <Router>
-          <Container className='page-content'>
-            <Switch>
-              <Route
-                to='/'
-                exact
-                component={Home}
-              />
-            </Switch>
-          </Container>
-        </Router>
-      </>
+      <Router>
+        <Container className='page-content'>
+          <Switch>
+            <Route
+              to='/'
+              exact
+              component={Home}
+            />
+          </Switch>
+        </Container>
+      </Router>
     )
   }
 }

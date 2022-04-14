@@ -5,6 +5,8 @@ import {
   Switch
 } from 'react-router-dom'
 import { Container } from 'reactstrap'
+import Navigation from './components/Navigation'
+import Apartments from './pages/Apartments'
 import Home from './pages/Home'
 
 class App extends Component {
@@ -23,12 +25,18 @@ class App extends Component {
     console.log("sign_out_route:", sign_out_route)
     return (
       <Router>
+        <Navigation {...this.props} />
         <Container className='page-content'>
           <Switch>
             <Route
-              to='/'
+              path='/'
               exact
               component={Home}
+            />
+            <Route
+              path='/apartmentindex'
+              exact
+              component={Apartments}
             />
           </Switch>
         </Container>

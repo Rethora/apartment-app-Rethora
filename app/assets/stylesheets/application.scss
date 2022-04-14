@@ -16,12 +16,21 @@
 @import 'bootstrap';
 
 // Global
+a {
+  text-decoration: none;
+}
+
 .page-content {
   padding: 100px 0;
 }
 
 .center {
   text-align: center;
+}
+
+// Navigation
+ul.nav {
+  justify-content: right;
 }
 
 // Home

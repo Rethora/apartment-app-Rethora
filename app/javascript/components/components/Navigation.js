@@ -20,9 +20,9 @@ class Navigation extends Component {
         </NavItem>
         <NavItem>
           <NavLink
-            to='/apartmentindex'
+            to='/apartmentsindex'
           >
-            <span className='nav-link'>Apartments</span>
+            <span className='nav-link'>All Apartments</span>
           </NavLink>
         </NavItem>
         {logged_in &&

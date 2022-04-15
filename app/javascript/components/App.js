@@ -10,19 +10,29 @@ import Apartments from './pages/Apartments'
 import Home from './pages/Home'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      apartments: []
+    }
+  }
+
+  componentDidMount() {
+    this.getAllApartments()
+  }
+
+  getAllApartments = async () => {
+    try {
+      const res = await fetch('/apartments')
+      const apartments = await res.json()
+      this.setState({ apartments: apartments })
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   render() {
-    const {
-      logged_in,
-      current_user,
-      new_user_route,
-      sign_in_route,
-      sign_out_route
-    } = this.props
-    console.log("logged_in:", logged_in)
-    console.log("current_user:", current_user)
-    console.log("new_user_route:", new_user_route)
-    console.log("sign_in_route:", sign_in_route)
-    console.log("sign_out_route:", sign_out_route)
+    const { apartments } = this.state
     return (
       <Router>
         <Navigation {...this.props} />
@@ -34,9 +44,9 @@ class App extends Component {
               component={Home}
             />
             <Route
-              path='/apartmentindex'
+              path='/apartmentsindex'
               exact
-              component={Apartments}
+              render={(props) => <Apartments apartments={apartments} />}
             />
           </Switch>
         </Container>

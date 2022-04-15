@@ -21,7 +21,7 @@ a {
 }
 
 .page-content {
-  padding: 100px 0;
+  padding: 80px 0;
 }
 
 .center {
@@ -31,6 +31,7 @@ a {
 // Navigation
 ul.nav {
   justify-content: right;
+  padding: 10px;
 }
 
 // Home
@@ -48,11 +49,31 @@ ul.nav {
   justify-items: center;
 }
 
-#about-text > p {
+#about-text>p {
   margin: 0 10px 0 0;
 }
 
 #complex-img {
   width: 30%;
   height: auto;
+}
+
+// Card
+.card-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  margin: 20px auto;
+}
+
+.card-img {
+  object-fit: cover;
+  height: 100%;
+  width: 50%;
+}
+
+.card-footer {
+  text-align: right;
 }

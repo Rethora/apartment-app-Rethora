@@ -14,7 +14,7 @@ class Apartments extends Component {
     const { apartments } = this.props
     return (
       <>
-        <h1>Apartments For Rent</h1>
+        <h1>All Apartments For Rent</h1>
         {
           apartments && apartments.map(apartment => (
             <Card key={apartment.id}>

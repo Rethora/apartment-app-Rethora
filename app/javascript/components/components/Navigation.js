@@ -27,6 +27,15 @@ class Navigation extends Component {
         </NavItem>
         {logged_in &&
           <NavItem>
+            <NavLink
+              to='/myapartments'
+            >
+              <span className='nav-link'>My Apartments</span>
+            </NavLink>
+          </NavItem>
+        }
+        {logged_in &&
+          <NavItem>
             <a
               href={sign_out_route}
               className='nav-link'

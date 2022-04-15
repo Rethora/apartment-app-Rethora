@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import {
   Card,
   CardBody,
@@ -11,7 +12,6 @@ import {
 class Apartments extends Component {
   render() {
     const { apartments } = this.props
-    console.log(apartments)
     return (
       <>
         <h1>Apartments For Rent</h1>
@@ -41,6 +41,11 @@ class Apartments extends Component {
                     </CardText>
                     <CardText>
                       <strong>Email:</strong> {apartment.email}
+                    </CardText>
+                    <CardText>
+                      <NavLink to={`/apartmentsshow/${apartment.id}`}>
+                        View Listing
+                      </NavLink>
                     </CardText>
                   </div>
                   <CardImg

@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import { Container } from 'reactstrap'
 import Navigation from './components/Navigation'
+import Apartment from './pages/Apartment'
 import Apartments from './pages/Apartments'
 import Home from './pages/Home'
 
@@ -39,14 +40,22 @@ class App extends Component {
         <Container className='page-content'>
           <Switch>
             <Route
-              path='/'
               exact
+              path='/'
               component={Home}
             />
             <Route
-              path='/apartmentsindex'
               exact
+              path='/apartmentsindex'
               render={(props) => <Apartments apartments={apartments} />}
+            />
+            <Route
+              path='/apartmentsshow/:id'
+              render={(props) => {
+                const { id } = props.match.params
+                const apartment = apartments.find(apartment => +id === apartment.id)
+                return <Apartment apartment={apartment} />
+              }}
             />
           </Switch>
         </Container>

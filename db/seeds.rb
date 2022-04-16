@@ -61,12 +61,16 @@ user_two_apartments = [
 ]
 
 user_one = User.create(
+  first_name: 'Hugh',
+  last_name: 'Hefner',
   email: 'test1@xxx.xxx', 
   password: '123456',
   password_confirmation: '123456'
 )
 
 user_two = User.create(
+  first_name: 'Ricky',
+  last_name: 'Bobby',
   email: 'test2@xxx.xxx', 
   password: '123456',
   password_confirmation: '123456'

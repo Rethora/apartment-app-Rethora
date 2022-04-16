@@ -24,6 +24,15 @@ class ApartmentsController < ApplicationController
     end
   end
 
+  def destroy
+    apartment = Apartment.destroy(params[:id])
+    if apartment.destroy
+      render json: apartment
+    else
+      render json: apartment.errors, status: :unprocessable_entity
+    end
+  end
+
   private
   def apartment_params
     params.require(:apartment).permit(

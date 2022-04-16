@@ -1,8 +1,20 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { Button, Card, CardBody, CardFooter, CardHeader, CardImg, CardText } from 'reactstrap'
 
 class MyApartments extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      deleted: false
+    }
+  }
+
+  handleDelete = (apartment) => {
+    this.props.deleteApartment(apartment)
+    this.setState({ deleted: true })
+  }
+
   render() {
     const { userApartments } = this.props
     return (
@@ -17,11 +29,23 @@ class MyApartments extends Component {
                 <span>
                   {apartment.street}, {apartment.city}, {apartment.state}
                 </span>
-                <NavLink to={`/editapartment/${apartment.id}`}>
-                  <Button>
-                    Edit
+                <div
+                  className='card-header-btn-container'
+                >
+                  <NavLink to={`/editapartment/${apartment.id}`}>
+                    <Button
+                      className='apartment-btn'
+                    >
+                      Edit
+                    </Button>
+                  </NavLink>
+                  <Button
+                    className='apartment-btn'
+                    onClick={() => this.handleDelete(apartment)}
+                  >
+                    Delete
                   </Button>
-                </NavLink>
+                </div>
               </div>
             </CardHeader>
             <CardBody>
@@ -62,6 +86,7 @@ class MyApartments extends Component {
             </CardFooter>
           </Card>
         ))}
+        {this.state.deleted && <Redirect to='/myapartments' />}
       </>
     )
   }

@@ -81,9 +81,11 @@ ul.nav {
 .card-header-container {
   display: flex;
   justify-content: space-between;
+}
 
-  &>a>.btn {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
+.apartment-btn {
+  padding-top: 0;
+  padding-bottom: 0;
+  width: 75px;
+  margin-left: 5px;
 }

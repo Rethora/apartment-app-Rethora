@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Card, CardBody, CardFooter, CardHeader, CardImg, CardText } from 'reactstrap'
+import { Button, Card, CardBody, CardFooter, CardHeader, CardImg, CardText } from 'reactstrap'
 
 class MyApartments extends Component {
   render() {
@@ -11,7 +11,18 @@ class MyApartments extends Component {
         {userApartments && userApartments.map(apartment => (
           <Card key={apartment.id}>
             <CardHeader>
-              {apartment.street}, {apartment.city}, {apartment.state}
+              <div
+                className='card-header-container'
+              >
+                <span>
+                  {apartment.street}, {apartment.city}, {apartment.state}
+                </span>
+                <NavLink to={`/editapartment/${apartment.id}`}>
+                  <Button>
+                    Edit
+                  </Button>
+                </NavLink>
+              </div>
             </CardHeader>
             <CardBody>
               <div className='card-flex'>

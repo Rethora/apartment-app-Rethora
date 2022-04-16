@@ -77,3 +77,13 @@ ul.nav {
 .card-footer {
   text-align: right;
 }
+
+.card-header-container {
+  display: flex;
+  justify-content: space-between;
+
+  &>a>.btn {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}

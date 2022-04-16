@@ -10,6 +10,7 @@ import Apartment from './pages/Apartment'
 import Apartments from './pages/Apartments'
 import Home from './pages/Home'
 import MyApartments from './pages/MyApartments'
+import NewApartment from './pages/NewApartment'
 
 class App extends Component {
   constructor(props) {
@@ -28,6 +29,27 @@ class App extends Component {
       const res = await fetch('/apartments')
       const apartments = await res.json()
       this.setState({ apartments: apartments })
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  createNewApartment = async (apartment) => {
+    const newApartment = {
+      ...apartment,
+      user_id: this.props.current_user.id
+    }
+    const options = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ apartment: newApartment })
+    }
+    try {
+      await fetch('/apartments', options)
+      this.getAllApartments()
     } catch (err) {
       console.error(err)
     }
@@ -70,6 +92,13 @@ class App extends Component {
                   const userApartments = apartments.filter(apartment => apartment.user_id === current_user.id)
                   return <MyApartments userApartments={userApartments} />
                 }}
+              />
+            }
+            {logged_in &&
+              <Route
+                exact
+                path='/newapartment'
+                render={(props) => <NewApartment createNewApartment={this.createNewApartment} />}
               />
             }
           </Switch>

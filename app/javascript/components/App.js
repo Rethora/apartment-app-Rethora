@@ -78,6 +78,27 @@ class App extends Component {
     }
   }
 
+  deleteApartment = async (apartment) => {
+    if (this.props.current_user.id !== apartment.user_id) return
+
+    if (!window.confirm('Are you sure you want to delete')) return
+
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }
+
+    try {
+      await fetch(`/apartments/${apartment.id}`, options)
+      this.getAllApartments()
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   render() {
     const { apartments } = this.state
     const {
@@ -113,7 +134,7 @@ class App extends Component {
                 path='/myapartments'
                 render={(props) => {
                   const userApartments = apartments.filter(apartment => apartment.user_id === current_user.id)
-                  return <MyApartments userApartments={userApartments} />
+                  return <MyApartments userApartments={userApartments} deleteApartment={this.deleteApartment} />
                 }}
               />
             }

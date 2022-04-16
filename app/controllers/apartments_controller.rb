@@ -5,6 +5,7 @@ class ApartmentsController < ApplicationController
   end
 
   def create
+    p current_user
     apartment = Apartment.create(apartment_params)
     if apartment.valid?
       render json: apartment

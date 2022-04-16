@@ -7,6 +7,7 @@ class Navigation extends Component {
     const {
       logged_in,
       new_user_route,
+      current_user,
       sign_in_route,
       sign_out_route
     } = this.props
@@ -66,6 +67,15 @@ class Navigation extends Component {
             >
               Sign Out
             </a>
+          </NavItem>
+        }
+        {logged_in &&
+          <NavItem>
+            <span
+              className='nav-link username'
+            >
+              Hello {current_user.first_name}
+            </span>
           </NavItem>
         }
         {!logged_in &&
